@@ -1,0 +1,28 @@
+Procedure:
+
+1. Navigate to folder where maven project(1st pgm) ispresent
+	C:\Users\User\eclipse-workspace\first
+2. Open git bash, initialize git repo,
+	- git init
+	- Open Credential manager and in windows credentials, delete git user name and email(if it is different user)
+    Unset config in git bash
+	- git config --global --unset user.name
+	- git config --local --unset user.email
+    Set config
+	- git config --global user.name "Your Name"
+	- git config --global user.email "you@example.com"
+    add and commit src/ and pom
+	- git add src/ ; git commit –m “src commited”
+	- git add pom.xml; git commit –m “pom committed”
+3. Open git hub, login to account, create new repo "repo_name"
+4. Come back to git bash
+	- git branch -M main (change name of branch from “master” to “main”)
+	- git remote add origin <your-repo-url>
+	- git push -u origin main
+5. Open Jenkins - localhost:8080
+6. Create Jenkins freestyle job and configure
+	* git - repo_url , branch
+	* build steps - clean test (invoke top-level maven targets)
+	* post build actions - "built in" (publish TestNG Results)
+7. Click save
+8. Click on build now

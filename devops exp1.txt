@@ -1,0 +1,75 @@
+Build and Run a Java Application with Maven, Migrate the Same Application to Gradle.
+
+Procedure:
+1. Create a Maven project by specifying the groupId and artifactId.(pgm1,ResultApp)
+2. Under src/main/java, create a package(pgm1) and Java file(Result.java) and write code in Result.java
+3. Under src/test/java, create a package(pgm1) and Java file(ResultTest.java) and write code in ResultTest.java
+4. Add the required TestNG dependency in the pom.xml file.
+5. Open the Terminal in the IDE
+		(Window → Show View → Terminal).
+6. Compile the project using Maven command:(cd to project folder)
+		mvn clean compile
+7. Run the Java program:
+		java -cp target/classes packageName.className(pgm1.Result)
+8. Execute test cases using Maven command:
+		mvn test
+9. Install Gradle, convert to gradle
+		gradle init
+		gradle build
+
+
+Code
+
+src/main/java:
+
+package pgm1;
+public class Result
+{
+public static String display(int m)
+{
+if(m<0 || m>100)
+return "invalid";
+else if(m<40)
+return "fail";
+else
+return "pass";
+}
+public static void main(String[] args)
+{
+System.out.println(display(55));
+}
+}
+
+
+src/test/java:
+
+package pgm1;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+public class ResultTest {
+@Test
+public void testPass() {
+Assert.assertEquals(Result.display(55), "pass");
+}
+@Test
+public void testFail() {
+Assert.assertEquals(Result.display(35), "fail");
+}
+@Test
+public void testInvalid() {
+Assert.assertEquals(Result.display(-5), "invalid");
+}
+}
+
+
+In pom.xml add the following dependency to run Testcases.
+
+<dependencies>
+<!-- https://mvnrepository.com/artifact/org.testng/testng -->
+<dependency>
+<groupId>org.testng</groupId>
+<artifactId>testng</artifactId>
+<version>7.5.1</version>
+<scope>test</scope>
+</dependency>
+</dependencies>

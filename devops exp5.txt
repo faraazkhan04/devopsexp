@@ -1,0 +1,47 @@
+Procedure:
+
+1. Create AWS account → IAM → create user with programmatic access → note Access Key ID + Secret Access Key(download .csv file)  (AmazonEC2FullAccess)
+
+2. Create a Project Folder with name as terraform D drive and open that folder in VS code. Also install terraform extension in vscode 
+
+3. Create the main.tf File
+
+provider "aws" {
+    region = "us-west-2"
+}
+resource "aws_instance" "ec2_machine" {
+  ami = "ami-07b0c09aab6e66ee9" 
+  instance_type = "t3.micro"
+  //  count=4
+  tags ={
+    Name = "Terra EC2"
+  }
+}
+
+4. Verify AWS CLI
+	aws --version
+
+5. Configure AWS CLI
+	aws configure
+
+AWS Access Key ID: YOUR_ACCESS_KEY
+AWS Secret Access Key: YOUR_SECRET_KEY
+Default region name: us-west-2
+Default output format: json
+
+6. Initialize Terraform
+	& "C:\Program Files\Terraform\terraform.exe" terraform init
+
+7. Preview Plan
+	& "C:\Program Files\Terraform\terraform.exe" terraform plan
+
+8. Apply Configuration
+	& "C:\Program Files\Terraform\terraform.exe" terraform apply
+	Confirm with yes
+
+9. Verify
+	Go to your AWS Console → EC2 → Instances, and you’ll see the instance running.
+
+10. Destroy Resources
+	& "C:\Program Files\Terraform\terraform.exe" terraform destroy
+	Confirm with yes
