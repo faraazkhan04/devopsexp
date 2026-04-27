@@ -10,7 +10,7 @@ Procedure:
 	- minikube start --driver=docker                                                                                        
   	- kubectl get nodes                                                                                                     
    	- kubectl get pods                                                                                                      
-  	- kubectl run nginx-pod --image=nginx                                                                                                                                                                                             	- kubectl get pods                                                                                                     
+  	- kubectl run nginx-pod --image=nginx                                                                                                                             	- kubectl get pods                                                                                                     
 	- kubectl expose pod nginx-pod --type=NodePort --port=80                                                                
 	- minikube service nginx-pod(nginx output)
 6. dashboard(terminal 3)
