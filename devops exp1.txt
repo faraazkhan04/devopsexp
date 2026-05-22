@@ -73,3 +73,35 @@ In pom.xml add the following dependency to run Testcases.
 <scope>test</scope>
 </dependency>
 </dependencies>
+
+
+
+
+
+TO MAKE TEST CASE ERROR
+
+package pgm1;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+public class ResultTest {
+
+    @Test
+    public void testPass() {
+        // Actual output is "pass", expected is wrong
+        Assert.assertEquals(Result.display(55), "fail");
+    }
+
+    @Test
+    public void testFail() {
+        // Actual output is "fail", expected is wrong
+        Assert.assertEquals(Result.display(35), "pass");
+    }
+
+    @Test
+    public void testInvalid() {
+        // Actual output is "invalid", expected is wrong
+        Assert.assertEquals(Result.display(-5), "fail");
+    }
+}
